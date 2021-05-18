@@ -7,11 +7,6 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['name', 'description']
 
-class GameForm(forms.ModelForm):
-    class Meta:
-        model = Game
-        exclude = []
-
 class BadgeForm(forms.Form):
     def __init__(self, *args, **kwargs):
         extra = kwargs.pop('extra')
