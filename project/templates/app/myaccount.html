@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+
+{% block title %}User Detail{% endblock %}
+
+{% block body %}
+
+<form action="{% url 'user_detail' user.id %}" method="post">{% csrf_token %}
+    {{ form.as_p }} 
+    <p>   
+    <label for="chb"> Verified: </label>
+    {%if user.verified %}
+    <input type="checkbox" name ='chb' checked="checked" disabled="disabled" />
+    {% else %}
+    <input type="checkbox" name ='chb' disabled="disabled" />
+    {% endif %}
+    </p>
+    <p><b>Balance: {{user.balance}}EUR </b></p>
+    <input type="submit" value="Save changes">
+</form>
+
+
+{% endblock %}

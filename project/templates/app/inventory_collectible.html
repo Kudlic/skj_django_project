@@ -1,0 +1,30 @@
+{% extends "app/base.html" %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body %}
+
+    <h3> Name: {{ collectible_instance.collectible.name }} </h3>
+    <h4> Game: {{ collectible_instance.collectible.game.name }} </h4>
+    <h4> Previous owner: 
+        {% if previous != None %} 
+            {{previous}}
+        {% else %}
+            --- 
+        {% endif %}
+    </h4>
+    {% if offered %} 
+        <h4> Item is being offered for {{offer.price}}EUR</h4>
+        <h4> <a href="{% url 'remove_offer' collectible_instance.id offer.id %}">Cancel Offer</a></h4>
+    {% else %} 
+        <h4>  Put item up for sale  </h4>     
+        <h4>  
+            <form action="{% url 'inventory_collectible' collectible_instance.id %}" method="post">{% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Post Offer"/>
+            </form>  
+        </h4>
+        <h5>{{msg}}</h5>
+    {% endif %}
+       
+{% endblock %}

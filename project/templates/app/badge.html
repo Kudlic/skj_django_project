@@ -1,0 +1,15 @@
+{% extends "app/base.html" %}
+
+{% block title %}Inventory{% endblock %}
+
+{% block body %}
+
+<a href="{% url 'library_game' gameins.id %}">back</a>
+<form action="{% url 'create_badge' gameins.id %}" method="post">{% csrf_token %}
+    <center style="margin-left: auto; margin-right: auto; vertical-align: middle; margin-top: 100px;">            
+        {{ form.as_p }} 
+    <input type="submit" value="Create Badge">
+    </center>
+</form>
+       
+{% endblock %}

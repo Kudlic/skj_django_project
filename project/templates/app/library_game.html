@@ -1,0 +1,18 @@
+{% extends "app/base.html" %}
+
+{% block title %}Game Instance Detail{% endblock %}
+
+{% block body %}
+
+    <h3> Name: {{ gameins.game.name }} </h3>
+    <h4> Distributor: {{ gameins.game.distributor }} </h4>
+    <wrap style="width: 200px; word-wrap: break-word;">
+        <h4> Description: {{ gameins.game.description }} </h4>
+    </wrap>
+    {% for key, value in myCountDict.items %}
+    <ul>
+        <li>{{key}} : {{value}} owned</li>
+    </ul>   
+    {% endfor %}
+    <a href="{% url 'create_badge' gameins.id %}"> Create Badge</a>
+{% endblock %}

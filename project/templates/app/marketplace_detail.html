@@ -1,0 +1,15 @@
+{% extends "app/base.html" %}
+
+{% block title %}Marketplace_detail{% endblock %}
+
+{% block body %}
+
+<h3>Marketplace</h3>
+<h3>  Offers for {{ collectible.name }}</h3>
+<ol type="1">
+{% for offer in marketplace %}
+    <li><a href="{% url 'buy_offer' collectible.id offer.id user.id %}"> Buy</a> {{ offer.item.collectible.name }} from {{ offer.seller.name }} for {{offer.price}} </li>  
+{% endfor %}
+</ol>
+       
+{% endblock %}

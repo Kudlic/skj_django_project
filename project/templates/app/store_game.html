@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% block title %}Game Detail{% endblock %}
+
+{% block body %}
+    
+    <h3> Name: {{ game.name }} </h3>
+    <h4> Distributor: {{ game.distributor }} </h4>
+    <wrap style="width: 200px; word-wrap: break-word;">
+        <h4> Description: {{ game.description }} </h4>
+    </wrap> 
+    <h4> Price: 
+        {% if game.price == 0 %}
+            Free
+        {% elif game.price == None %}
+            Sale is over 
+        {% else %}
+            {{ game.price }}
+        {% endif %}
+        </h4>
+    {% if game.price != None %}  
+    <h4> <a href="{% url 'buy_store_game' game.id user.id %}"> Buy {{ game.name }} for {{ user.name }}</a></h4>
+    {% endif %}
+
+    {% if hasGame %}
+        <h3>You already own this game</h3>
+    {% endif %}
+{% endblock %}

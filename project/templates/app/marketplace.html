@@ -1,0 +1,14 @@
+{% extends "app/base.html" %}
+
+{% block title %}Marketplace_detail{% endblock %}
+
+{% block body %}
+
+<h3>Marketplace</h3>
+<ol type="1">
+{% for key, value in myCountDict.items %}
+    <li><a href="{% url 'marketplace_detail' key.id %}"> {{key}}</a> : {{value}} offer(s)</li>
+{% endfor %}
+</ol>
+       
+{% endblock %}
